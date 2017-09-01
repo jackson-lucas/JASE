@@ -1,9 +1,9 @@
 ## TODO
 
 ### 03/09
-- Extrair informacao para python (TITLE, MAJOR SUBJECTS, MINOR SUBJECTS, ABSTRACT)
-- Remover stopwords
-- Aplicar stemming
+- <del>Extrair informacao para python (TITLE, MAJOR SUBJECTS, MINOR SUBJECTS, ABSTRACT)</del>
+- <del>Remover stopwords</del>
+- <del>Aplicar stemming</del>
 - Lista Invertida, Vocabulário
   - Documentos (palavra, tf, idf)
 - Implementar Busca (Método de Similaridade) - Slide 49+
