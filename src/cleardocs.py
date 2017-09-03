@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from document import Document
 from stemming.porter2 import stem
 import string
@@ -39,7 +41,7 @@ def remove_stopwords(document_list):
         return doc
     stopwords = []
 
-    with open('../aux/stopwords.txt') as f:
+    with open('./aux/stopwords.txt') as f:
         for el in f:
             stopwords.append(el.strip())
 

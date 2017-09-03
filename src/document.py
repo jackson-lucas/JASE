@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 class Document(object):
     def __init__(self, rn, title, major_sub, minor_sub, abstract):
         self.id_number = rn
