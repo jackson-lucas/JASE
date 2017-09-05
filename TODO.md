@@ -6,8 +6,8 @@
 - <del>Aplicar stemming</del>
 - <del>Lista Invertida, Vocabulário</del>
   - <del>Documentos (palavra, tf, idf)</del>
-- Modificar o código para ler diversos arquivos em vez de apenas 1
-- Trabalhar no ID dos documentos de arquivos distindos.
+- <del>Modificar o código para ler diversos arquivos em vez de apenas 1</del>
+- <del>Trabalhar no ID dos documentos de arquivos distintos.</del>
 - Implementar Busca (Método de Similaridade) - Slide 49+
   - Modelo Vetorial
   - Retornar documentos mais relevantes
