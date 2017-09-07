@@ -33,7 +33,7 @@ def get_tf(doc_list):
         for word in all_words:
             word_dict[word] += 1
         for key, value in word_dict.items():
-            tf[key].append([index, value / len(all_words)])
+            tf[key].append([index, (value * 1.0) / len(all_words)])
     return tf
 
 
