@@ -50,6 +50,7 @@ def build_inverted_index(doc_list):
 
     for key, value in idf.items():
         inverted_index[key].append(value)
+        inverted_index[key].append([])
         for element in tf[key]:
-            inverted_index[key].append(element)
+            inverted_index[key][1].append(element)
     return inverted_index
