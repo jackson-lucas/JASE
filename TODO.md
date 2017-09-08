@@ -8,9 +8,12 @@
   - <del>Documentos (palavra, tf, idf)</del>
 - <del>Modificar o código para ler diversos arquivos em vez de apenas 1</del>
 - <del>Trabalhar no ID dos documentos de arquivos distintos.</del>
-- Implementar Busca (Método de Similaridade) - Slide 49+
-  - Modelo Vetorial
-  - Retornar documentos mais relevantes
+- Extrair Queries do Arquivo
+  - Termos
+  - Documentos relevantes
+- <del>Implementar Busca (Método de Similaridade) - Slide 49+</del>
+  - <del>Modelo Vetorial</del>
+  - <del>Retornar documentos mais relevantes</del>
 
 ### 04/09
 - NDCG
