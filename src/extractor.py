@@ -92,7 +92,7 @@ def extract_documents(file_path):
             while data[i].startswith(" "):
                 minor_sub += data[i]
                 i += 1
-        elif data[i].startswith("AB"):
+        elif data[i].startswith("AB") or data[i].startswith("EX"):
             abstract += data[i][2:]
             i += 1
             while data[i].startswith(" "):
