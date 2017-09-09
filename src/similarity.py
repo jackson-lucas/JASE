@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from math import pow, sqrt
+from heap import heapify
 
 
 # tf(document, term) x idf(term)
@@ -60,11 +61,24 @@ def normalize(norms):
 
 
     # stemming + stopwords?
-def similarity(accumulators, norms, query_norm):
+def similarity(accumulators, norms, query_norm, k):
     similarities = []
     for doc in accumulators:
-        similarities.append([doc, accumulators[doc] / (norms[doc] * query_norm)])
-    return similarities
+        try:
+            similarities.append([doc, accumulators[doc] / (norms[doc] * query_norm)])
+        except ZeroDivisionError:
+            pass
+
+    if k > len(similarities):
+        k = len(similarities)
+
+    top_k = []
+    for index in range(k):
+        heapify(similarities)
+        top_k.append(similarities[0])
+        similarities = similarities[1:]
+
+    return top_k
 
 def main():
     inverted_index = {
@@ -84,7 +98,7 @@ def main():
     print(accumulators)
     print(norms)
 
-    similarities = similarity(accumulators, norms, query_norm)
+    similarities = similarity(accumulators, norms, query_norm, 10)
     print(similarities)
 
 if __name__ == '__main__':

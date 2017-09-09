@@ -50,27 +50,21 @@ def idcg(retrieved_docs_n_scores, relevant_docs, k):
     cumulative_gain = 0.
     docs_n_scores = sorted(retrieved_docs_n_scores, reverse=True, key=getKey)
 
-    if k > len(relevant_docs):
-        k = len(relevant_docs)
+    docs = [item[0] for item in docs_n_scores]
 
-    for index in range(1, k):
-        if docs_n_scores[index][0] in relevant_docs:
-            cumulative_gain += 1. / log(index+1, 2)
-
-    if docs_n_scores[index][0] in relevant_docs:
-        cumulative_gain += 1
-
-    return cumulative_gain
+    return dcg(docs, relevant_docs, k)
 
 def ndcg(retrieved_docs_n_scores, relevant_docs, k):
     retrieved_docs = [item[0] for item in retrieved_docs_n_scores]
 
     dcg_value = dcg(retrieved_docs, relevant_docs, k)
+
+    if dcg_value == 0:
+        return dcg_value
+
     idcg_value = idcg(retrieved_docs_n_scores, relevant_docs, k)
-    try:
-        return dcg_value / idcg_value
-    except ZeroDivisionError:
-        import pdb; pdb.set_trace()
+
+    return dcg_value / idcg_value
 
 def main():
     p_value = precision([1,2,3], [2,3,4,5,6], 3)
