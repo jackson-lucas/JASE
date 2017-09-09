@@ -8,9 +8,9 @@
   - <del>Documentos (palavra, tf, idf)</del>
 - <del>Modificar o código para ler diversos arquivos em vez de apenas 1</del>
 - <del>Trabalhar no ID dos documentos de arquivos distintos.</del>
-- Extrair Queries do Arquivo
-  - Termos
-  - Documentos relevantes
+- <del>Extrair Queries do Arquivo</del>
+  - <del>Termos</del>
+  - <del>Documentos relevantes</del>
 - <del>Implementar Busca (Método de Similaridade) - Slide 49+</del>
   - <del>Modelo Vetorial</del>
   - <del>Retornar documentos mais relevantes</del>

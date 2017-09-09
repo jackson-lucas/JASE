@@ -3,7 +3,46 @@
 import sys
 import pprint
 from document import Document
+from query import Query
 
+def is_relevant_data(data):
+    if '' == data.strip():
+        return False
+    return True
+
+def extract_queries(file_path):
+    data = []
+    with open(file_path) as f:
+        data = f.readlines()
+
+    queries = []
+    for index in range(len(data)):
+
+        if data[index].startswith('QU'):
+            text = data[index].split(' ', 1)[1]
+        elif data[index].startswith('RD'):
+            documents = []
+            relevances = ' '.join(data[index].split()).split()[1:]
+            for rv_index in range(len(relevances)):
+                if rv_index % 2 == 0:
+                    documents.append(relevances[rv_index])
+
+            index += 1
+            should_continue = is_relevant_data(data[index]);
+            while(should_continue):
+                line = ' '.join(data[index].split()).split()
+                for rv_index in range(len(line)):
+                    if rv_index % 2 == 0:
+                        documents.append(line[rv_index])
+
+                index += 1
+                if index >= len(data):
+                    break
+                should_continue = is_relevant_data(data[index])
+
+            queries.append(Query(len(queries), text, documents))
+
+    return queries
 
 def extract_documents(file_path):
     """
@@ -77,6 +116,11 @@ def main():
     for document in document_list:
         pprint.pprint(document.__dict__)
 
+    queries = extract_queries('cfc/cfquery')
+    import pprint
+    for query in queries[-7:]:
+        pprint.pprint(query.text)
+        pprint.pprint(query.relevant_docs)
 
 if __name__ == '__main__':
     main()
