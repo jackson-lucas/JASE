@@ -15,7 +15,7 @@ def get_idf(doc_list):
     for index, doc in enumerate(doc_list):
         all_words = doc.title + doc.abstract + doc.major_subjects + doc.minor_subjects
         for word in all_words:
-            word_dict[word].add(index)
+            word_dict[word].add(index+1)
     for key, value in word_dict.items():
         wd_frequency[key] = math.log(len(doc_list) / len(value))
     return wd_frequency
@@ -33,7 +33,7 @@ def get_tf(doc_list):
         for word in all_words:
             word_dict[word] += 1
         for key, value in word_dict.items():
-            tf[key].append([index, (value * 1.0) / len(all_words)])
+            tf[key].append([index+1, (value * 1.0) / len(all_words)])
     return tf
 
 

@@ -67,8 +67,10 @@ def ndcg(retrieved_docs_n_scores, relevant_docs, k):
 
     dcg_value = dcg(retrieved_docs, relevant_docs, k)
     idcg_value = idcg(retrieved_docs_n_scores, relevant_docs, k)
-
-    return dcg_value / idcg_value
+    try:
+        return dcg_value / idcg_value
+    except ZeroDivisionError:
+        import pdb; pdb.set_trace()
 
 def main():
     p_value = precision([1,2,3], [2,3,4,5,6], 3)

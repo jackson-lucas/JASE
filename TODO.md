@@ -14,10 +14,11 @@
 - <del>Implementar Busca (Método de Similaridade) - Slide 49+</del>
   - <del>Modelo Vetorial</del>
   - <del>Retornar documentos mais relevantes</del>
+- Retornar top K documentos
 
 ### 04/09
-- NDCG
-- MAP
+- <del>NDCG</del>
+- <del>MAP</del>
 
 - Relatorio de meia pagina
 

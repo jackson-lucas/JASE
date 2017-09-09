@@ -43,7 +43,6 @@ def remove_stopwords(query_list):
 
 
 def clear_query_list(query_list):
-    import pdb; pdb.set_trace()
     query_list = remove_punctuation(query_list)
     query_list = remove_stopwords(query_list)
     query_list = apply_stemming(query_list)

@@ -25,7 +25,7 @@ def extract_queries(file_path):
             relevances = ' '.join(data[index].split()).split()[1:]
             for rv_index in range(len(relevances)):
                 if rv_index % 2 == 0:
-                    documents.append(relevances[rv_index])
+                    documents.append(int(relevances[rv_index]))
 
             index += 1
             should_continue = is_relevant_data(data[index]);
@@ -33,7 +33,7 @@ def extract_queries(file_path):
                 line = ' '.join(data[index].split()).split()
                 for rv_index in range(len(line)):
                     if rv_index % 2 == 0:
-                        documents.append(line[rv_index])
+                        documents.append(int(line[rv_index]))
 
                 index += 1
                 if index >= len(data):
