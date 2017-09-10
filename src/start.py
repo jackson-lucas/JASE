@@ -41,7 +41,12 @@ def main():
         )
         ndcg_values.append(metrics.ndcg(similarities, query.relevant_docs, k))
 
-    print(ndcg_values)
+    mean = metrics.mean(ndcg_values)
+
+    mse = metrics.mse(mean, ndcg_values)
+
+    print('ndcg mean', mean)
+    print('ndcg mse', mse)
 
     map_value = avg_precision / len(queries)
     print('map', map_value)

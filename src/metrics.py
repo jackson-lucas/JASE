@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from query import Query
-from math import log
+from math import log, pow
 
 def getKey(doc):
     return doc[1]
@@ -46,13 +46,8 @@ def dcg(retrieved_docs, relevant_docs, k):
 
     return cumulative_gain
 
-def idcg(retrieved_docs_n_scores, relevant_docs, k):
-    cumulative_gain = 0.
-    docs_n_scores = sorted(retrieved_docs_n_scores, reverse=True, key=getKey)
-
-    docs = [item[0] for item in docs_n_scores]
-
-    return dcg(docs, relevant_docs, k)
+def idcg(relevant_docs, k):
+    return dcg(relevant_docs, relevant_docs, k)
 
 def ndcg(retrieved_docs_n_scores, relevant_docs, k):
     retrieved_docs = [item[0] for item in retrieved_docs_n_scores]
@@ -62,9 +57,21 @@ def ndcg(retrieved_docs_n_scores, relevant_docs, k):
     if dcg_value == 0:
         return dcg_value
 
-    idcg_value = idcg(retrieved_docs_n_scores, relevant_docs, k)
+    idcg_value = idcg(relevant_docs, k)
 
     return dcg_value / idcg_value
+
+def mean(values):
+    total = 0.
+    for value in values:
+        total += value
+    return total / len(values)
+
+def mse(mean, values):
+    mse_value = 0.
+    for value in values:
+        mse_value += pow(mean - value, 2)
+    return mse_value / len(values)
 
 def main():
     p_value = precision([1,2,3], [2,3,4,5,6], 3)
