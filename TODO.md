@@ -26,5 +26,3 @@
 - Fazer algo mais!
 
 - Relatorio de mais meia pagina
-
-pip install -r requirements.txt
