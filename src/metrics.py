@@ -34,14 +34,14 @@ def mean_average_precision(queries, retrieved_docs):
 def dcg(retrieved_docs, relevant_docs, k):
     cumulative_gain = 0.
 
-    if k > len(relevant_docs):
-        k = len(relevant_docs)
+    if k > len(retrieved_docs):
+        k = len(retrieved_docs)
 
     for index in range(1, k):
         if retrieved_docs[index] in relevant_docs:
             cumulative_gain += 1. / log(index+1, 2)
 
-    if retrieved_docs[0] in relevant_docs:
+    if len(retrieved_docs) and retrieved_docs[0] in relevant_docs:
         cumulative_gain += 1
 
     return cumulative_gain
