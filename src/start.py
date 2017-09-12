@@ -8,6 +8,7 @@ import extractor
 import tfidf
 import similarity
 import metrics
+import crossvalidation
 
 
 def main():
@@ -19,6 +20,22 @@ def main():
     k = int(sys.argv[1])
     queries = extractor.extract_queries(sys.argv[2])
     queries = clearqueries.clear_query_list(queries)
+
+    #####
+    # qnt = int(0.2 * len(queries))
+    # training_data, queries = queries[:qnt], queries[qnt:]
+    # frequent_words = crossvalidation.get_most_frequent(training_data)
+    # n_queries = []
+    # for x in range(len(queries)):
+    #     new_query = []
+    #     for word in queries[x].text:
+    #         if word in frequent_words:
+    #             new_query.append(word)
+    #             new_query.append(word)
+    #         else:
+    #             new_query.append(word)
+    #     queries[x].text = new_query
+    #####
 
     for argument in sys.argv[3:]:
         docs += extractor.extract_documents(argument)
@@ -50,8 +67,6 @@ def main():
 
     map_value = avg_precision / len(queries)
     print('map', map_value)
-
-
 
 
 if __name__ == '__main__':
