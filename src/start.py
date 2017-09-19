@@ -17,27 +17,28 @@ def main():
     O arquivo deve ser dado como parâmetro para ser indexado.
     '''
     docs = []
-    k = int(sys.argv[1])
-    queries = extractor.extract_queries(sys.argv[2])
+    k = int(sys.argv[2])
+    queries = extractor.extract_queries(sys.argv[3])
     queries = clearqueries.clear_query_list(queries)
 
     ####
-    qnt = int(0.2 * len(queries))
-    training_data, queries = queries[:qnt], queries[qnt:]
-    frequent_words = crossvalidation.get_most_frequent(training_data)
-    n_queries = []
-    for x in range(len(queries)):
-        new_query = []
-        for word in queries[x].text:
-            if word in frequent_words:
-                new_query.append(word)
-                new_query.append(word)
-            else:
-                new_query.append(word)
-        queries[x].text = new_query
+    if (sys.argv[1] == 'OTM'):
+        qnt = int(0.2 * len(queries))
+        training_data, queries = queries[:qnt], queries[qnt:]
+        frequent_words = crossvalidation.get_most_frequent(training_data)
+        n_queries = []
+        for x in range(len(queries)):
+            new_query = []
+            for word in queries[x].text:
+                if word in frequent_words:
+                    new_query.append(word)
+                    new_query.append(word)
+                else:
+                    new_query.append(word)
+            queries[x].text = new_query
     ####
 
-    for argument in sys.argv[3:]:
+    for argument in sys.argv[4:]:
         docs += extractor.extract_documents(argument)
     clean_docs = cleardocs.clear_document_list(docs)
 
